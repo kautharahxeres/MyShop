@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Home - MyShop{% endblock %}
+{% block content %}
+  <h2>Latest products</h2>
+  <div class="grid">
+    {% for p in products %}
+      <div class="card">
+        <h3><a href="{{ url_for('main.product_detail', product_id=p.id) }}">{{ p.name }}</a></h3>
+        <p class="price">${{ '%.2f'|format(p.price) }}</p>
+        <p>{{ p.description[:120] }}</p>
+      </div>
+    {% else %}
+      <p>No products yet. <a href="{{ url_for('main.add_product') }}">Add one</a>.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Products - MyShop{% endblock %}
+{% block content %}
+  <h2>Products</h2>
+  <ul class="product-list">
+    {% for p in products %}
+      <li><a href="{{ url_for('main.product_detail', product_id=p.id) }}">{{ p.name }}</a> — ${{ '%.2f'|format(p.price) }}</li>
+    {% else %}
+      <li>No products found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} - MyShop{% endblock %}
+{% block content %}
+  <h2>{{ product.name }}</h2>
+  <p class="price">${{ '%.2f'|format(product.price) }}</p>
+  <p>{{ product.description }}</p>
+  {% if product.category %}
+    <p><strong>Category:</strong> {{ product.category.name }}</p>
+  {% endif %}
+  <p><a href="{{ url_for('main.products') }}">Back to products</a></p>
+{% endblock %}

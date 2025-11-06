@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Add Product - MyShop{% endblock %}
+{% block content %}
+  <h2>Add Product</h2>
+  <form method="post" class="form">
+    <label for="name">Name</label>
+    <input id="name" name="name" required>
+
+    <label for="price">Price</label>
+    <input id="price" name="price" type="number" step="0.01" required>
+
+    <label for="category">Category (existing or new)</label>
+    <input id="category" name="category" list="categories">
+    <datalist id="categories">
+      {% for c in categories %}
+        <option value="{{ c.name }}"></option>
+      {% endfor %}
+    </datalist>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description"></textarea>
+
+    <button type="submit" class="btn">Add</button>
+  </form>
+{% endblock %}
